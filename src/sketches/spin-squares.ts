@@ -1,6 +1,6 @@
 import p5 from 'p5';
 
-export function spinSquares(width: number, height: number) {
+export function spinSquares(width: number, height: number, frameRendered: Function) {
   return (p: p5) => {
     let rotateA = 0;
     p.setup = () => {
@@ -27,6 +27,7 @@ export function spinSquares(width: number, height: number) {
         }
         p.pop();
       }
+      frameRendered();
     };
   };
 }

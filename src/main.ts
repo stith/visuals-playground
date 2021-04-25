@@ -47,7 +47,13 @@ const switchSketch = (sketch: keyof typeof sketches) => {
     currentSketch.remove();
   }
   const canvasRef = document.getElementById('mainCanvas');
-  currentSketch = new p5(sketches[sketch].fn(WIDTH, HEIGHT), canvasRef);
+  currentSketch = new p5(sketches[sketch].fn(WIDTH, HEIGHT, frameRendered), canvasRef);
+};
+
+const capturer = new CCapture({format: 'png', display: true});
+const frameRendered = () => {
+  const canvasRef = document.getElementById('defaultCanvas0');
+  capturer.capture(canvasRef);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -76,4 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // canvasRef.setAttribute('height', HEIGHT.toString());
 
   switchSketch(defaultSketch);
+
+  // Bind recording button
+  const recButton = document.getElementById('record') as HTMLButtonElement;
+  recButton.onclick = () => {
+    if (recButton.getAttribute('data-recording') === 'true') {
+      capturer.stop();
+      capturer.save();
+      recButton.setAttribute('data-recording', 'false');
+      recButton.innerText = 'Record';
+    } else {
+      capturer.start();
+      recButton.setAttribute('data-recording', 'true');
+      recButton.innerText = 'Stop';
+    }
+  };
 });

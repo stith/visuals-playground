@@ -2,7 +2,7 @@ import p5 from 'p5';
 
 // From https://betterprogramming.pub/learning-p5-js-by-making-fractals-cbdcac5c651e
 
-export function tree(width: number, height: number) {
+export function tree(width: number, height: number, frameRendered: Function) {
   const branch = (p: p5, length: number, angle: number, weightIn: number) => {
     let weight = weightIn - 1;
     p.strokeWeight(weight);
@@ -41,6 +41,7 @@ export function tree(width: number, height: number) {
       p.stroke(50, 250, 50, 128);
       branch(p, 100, angle, 11);
       p.translate(0, -150);
+      frameRendered();
     };
   };
 }

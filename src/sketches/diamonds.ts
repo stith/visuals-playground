@@ -1,6 +1,6 @@
 import p5 from 'p5';
 
-export function diamonds(width: number, height: number) {
+export function diamonds(width: number, height: number, frameRendered: Function) {
   const count = 10;
   const gap = 2;
   const fullWidth = width / count;
@@ -53,6 +53,7 @@ export function diamonds(width: number, height: number) {
           p.pop();
         }
       }
+      frameRendered();
     };
   };
 }

@@ -1,6 +1,6 @@
 import p5 from 'p5';
 
-export function diamondsInCircles(width: number, height: number) {
+export function diamondsInCircles(width: number, height: number, frameRendered: Function) {
   const circles = 7;
   const countPerCircle = 90;
   const size = 40;
@@ -50,6 +50,7 @@ export function diamondsInCircles(width: number, height: number) {
       }
 
       p.pop();
+      frameRendered();
     };
   };
 }

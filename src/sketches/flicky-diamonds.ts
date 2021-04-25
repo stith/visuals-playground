@@ -1,6 +1,6 @@
 import p5 from 'p5';
 
-export function flickyDiamonds(width: number, height: number) {
+export function flickyDiamonds(width: number, height: number, frameRendered: Function) {
   const count = 10;
   const gap = 9;
   const fullWidth = width / count;
@@ -44,6 +44,7 @@ export function flickyDiamonds(width: number, height: number) {
           p.pop();
         }
       }
+      frameRendered();
     };
   };
 }
