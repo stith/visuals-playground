@@ -1,12 +1,13 @@
 import p5 from 'p5';
 
+import { diamonds } from './sketches/diamonds';
 import { spinSquares } from './sketches/spin-squares';
 import { tree } from './sketches/tree';
 
 const WIDTH = 500;
 const HEIGHT = 500;
 
-const defaultSketch = 'spinSquares';
+const defaultSketch = 'diamonds';
 const sketches = {
   spinSquares: {
     name: 'Spin Squares',
@@ -15,6 +16,10 @@ const sketches = {
   tree: {
     name: 'Tree fractal',
     fn: tree,
+  },
+  diamonds: {
+    name: 'Diamonds',
+    fn: diamonds,
   }
 };
 
