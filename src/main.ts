@@ -3,13 +3,14 @@ import p5 from 'p5';
 import { diamonds } from './sketches/diamonds';
 import { diamondsInCircles } from './sketches/diamonds-in-circles';
 import { flickyDiamonds } from './sketches/flicky-diamonds';
+import { hexagon } from './sketches/hexagons';
 import { spinSquares } from './sketches/spin-squares';
 import { tree } from './sketches/tree';
 
 const WIDTH = 500;
 const HEIGHT = 500;
 
-const defaultSketch = 'diamondsInCircles';
+const defaultSketch = 'hexagons';
 const sketches = {
   spinSquares: {
     name: 'Spin Squares',
@@ -31,6 +32,10 @@ const sketches = {
     name: 'Diamonds in Circles',
     fn: diamondsInCircles,
   },
+  hexagons: {
+    name: 'Hexagons',
+    fn: hexagon,
+  }
 };
 
 const sketchChange = function(e: Event) {
@@ -50,7 +55,7 @@ const switchSketch = (sketch: keyof typeof sketches) => {
   currentSketch = new p5(sketches[sketch].fn(WIDTH, HEIGHT, frameRendered), canvasRef);
 };
 
-const capturer = new CCapture({format: 'png', display: true});
+const capturer = new CCapture({format: 'png', display: false});
 const frameRendered = () => {
   const canvasRef = document.getElementById('defaultCanvas0');
   capturer.capture(canvasRef);
