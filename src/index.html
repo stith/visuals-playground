@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
-  <title>playin</title>
+  <title><%= htmlWebpackPlugin.options.title || 'playin'%></title>
   <style>
     body {
       padding: 0;
@@ -17,9 +17,19 @@
     }
   </style>
   <script src="https://unpkg.com/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %>
+    
+    <% if (htmlWebpackPlugin.options.devServer) { %>
+    <script src="<%= htmlWebpackPlugin.options.devServer%>/webpack-dev-server.js"></script>
+    <% } %>
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+      <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+      <% } %>
 </head>
 <body>
-    <script src="/main.bundle.js"></script>
+    <!--<script src="/main.bundle.js"></script>-->
     <div id="mainCanvas"></div>
     <div id="inputs" class='inputs'></div>
     <br />

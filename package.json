@@ -6,9 +6,9 @@
   "author": "Neon Stith <neon@stith.me>",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --port 9000 --inline --progress --profile --colors --watch --content-base src/ --mode development",
+    "start": "webpack serve --port 9000 --inline --progress --profile --watch-content-base --content-base src/ --mode development",
     "build": "webpack --config webpack.config.js --mode production",
-    "build.prod": "webpack --config webpack.config.js -p",
+    "build.prod": "webpack --config webpack.config.js --mode production",
     "build.esnext": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
@@ -16,20 +16,21 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.4.0",
+    "@babel/core": "^7.13.16",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
     "@babel/preset-env": "^7.4.1",
     "@babel/preset-typescript": "^7.3.3",
     "@types/node": "7.0.0",
     "awesome-typescript-loader": "5.2.0",
+    "html-webpack-plugin": "^5.3.1",
     "source-map-loader": "0.2.3",
     "tslint": "5.17.0",
     "tslint-loader": "3.6.0",
     "typescript": "3.5.1",
-    "webpack": "4.12.0",
-    "webpack-cli": "3.0.8",
-    "webpack-dev-server": "3.1.4"
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "@types/ccapture.js": "^1.1.0",
