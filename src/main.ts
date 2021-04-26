@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
   document.addEventListener('keydown', (e: KeyboardEvent) => {
-    console.log('Got keydown:', e.key);
     if (e.key === ' ') {
       const container = document.getElementById('container');
       container.hidden = !container.hidden;
