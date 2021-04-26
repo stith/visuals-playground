@@ -12,10 +12,20 @@ export function hexagon(width: number, height: number, frameRendered: Function) 
 
     p.draw = () => {
       p.clear();
+      p.noStroke();
       p.push();
       p.translate(100, 100);
       const frameProg = normalize((p.frameCount * rotateSpeed) % 360, 0, 360, 0, Math.PI * 2);
       p.rotate(frameProg);
+      polygon(p, 0, 0, 90, 6);
+      p.rotate((-frameProg) * 2);
+      p.fill(128);
+      polygon(p, 0, 0, 75, 6);
+      p.rotate(frameProg + (frameProg / 3));
+      p.fill(48);
+      polygon(p, 0, 0, 60, 6);
+      p.rotate((-frameProg) * 2);
+      p.fill(255);
       polygon(p, 0, 0, 50, 6);
       p.pop();
       frameRendered();
