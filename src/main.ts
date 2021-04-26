@@ -52,10 +52,10 @@ const switchSketch = (sketch: keyof typeof sketches) => {
     currentSketch.remove();
   }
   const canvasRef = document.getElementById('mainCanvas');
-  currentSketch = new p5(sketches[sketch].fn(WIDTH, HEIGHT, frameRendered), canvasRef);
+  currentSketch = new p5(sketches[sketch].fn(window.innerWidth, window.innerHeight, frameRendered), canvasRef);
 };
 
-const capturer = new CCapture({format: 'png', display: false});
+const capturer = new CCapture({format: 'png', display: true});
 const frameRendered = () => {
   const canvasRef = document.getElementById('defaultCanvas0');
   capturer.capture(canvasRef);
@@ -81,11 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Bind onChange handler
   sketchSelector.onchange = sketchChange;
 
-  // Set up the sketch renderer
-  // const canvasRef = document.getElementById('mainCanvas');
-  // canvasRef.setAttribute('width', WIDTH.toString());
-  // canvasRef.setAttribute('height', HEIGHT.toString());
-
   switchSketch(defaultSketch);
 
   // Bind recording button
@@ -102,4 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
       recButton.innerText = 'Stop';
     }
   };
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    console.log('Got keydown:', e.key);
+    if (e.key === ' ') {
+      const container = document.getElementById('container');
+      container.hidden = !container.hidden;
+    }
+  });
 });

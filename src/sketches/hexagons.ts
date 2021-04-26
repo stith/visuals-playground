@@ -13,6 +13,7 @@ export function hexagon(width: number, height: number, frameRendered: Function) 
     p.draw = () => {
       p.clear();
       polygon(p, 100, 100, 50, 6);
+      frameRendered();
     };
   };
 }

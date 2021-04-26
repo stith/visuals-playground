@@ -17,7 +17,6 @@ export function diamonds(width: number, height: number, frameRendered: Function)
   return (p: p5) => {
     p.setup = () => {
       p.createCanvas(width, height);
-      // p.angleMode(p.DEGREES);
     };
 
     p.draw = () => {
