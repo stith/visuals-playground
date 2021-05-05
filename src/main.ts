@@ -10,7 +10,7 @@ import { tree } from './sketches/tree';
 const WIDTH = 500;
 const HEIGHT = 500;
 
-const defaultSketch = 'hexagons';
+const defaultSketch = 'diamonds';
 const sketches = {
   spinSquares: {
     name: 'Spin Squares',
